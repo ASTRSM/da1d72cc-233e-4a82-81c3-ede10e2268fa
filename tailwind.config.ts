@@ -16,9 +16,18 @@ const config: Config = {
       colors: {
         'accent-1': '#fa4529',
         'accent-2': '#e03d24',
+        'background': '#181A1B',
+        'grey': '#2d2d2d'
       },
       animation: {
         'spin-slow': 'spin 10s linear infinite',
+      },
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
       },
     },
   },

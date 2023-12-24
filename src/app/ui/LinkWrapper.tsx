@@ -5,7 +5,7 @@ import { SideButton } from './buttons'
 export default function LinkWrapper() {
   const pathname = usePathname()
   return (
-    <div className='flex gap-2 md:block mx-4 md:m-0'>
+    <div className='flex gap-2 md:block mx-4 md:m-0 h-full'>
       <SideButton
         filename='home'
         text='Home'

@@ -1,9 +1,11 @@
-import Image from 'next/image'
+import AddPost from './ui/AddPost'
+import PostsWrapper from './ui/PostsWrapper'
 
 export default function Home() {
   return (
-    <main className="">
-      <h1>Home Page</h1>
-    </main>
+    <div className='flex flex-col justify-center mb-12'>
+      <AddPost />
+      <PostsWrapper />
+    </div>
   )
 }
