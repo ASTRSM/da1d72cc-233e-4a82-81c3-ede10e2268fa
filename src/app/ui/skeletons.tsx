@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export function Loading() {
+export function LoadingCircle() {
   return (
     <div
       className={`bg-background mx-auto my-10`}

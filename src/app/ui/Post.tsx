@@ -10,20 +10,20 @@ export default function Post({
   id: number
   title: string
   body: string
-  tags: string[]
+  tags: string[] | null
   userId: number
 }) {
   return (
     <>
       <p className='italic'>{`User ${userId}`}</p>
-      <Link href={`/posts/${id}`}>
+      <Link href={`/posts/${id}`} data-test='post-link'>
         <h2 className='text-xl font-bold text-accent-1 hover:brightness-200 text-ellipsis overflow-hidden max-h-8'>
           {title}
         </h2>
       </Link>
       <p className='text-justify my-2'>{body}</p>
       <div className='text-right'>
-        {tags.map((tag, index) => (
+        {tags?.map((tag, index) => (
           <span key={tag}>
             {`${index !== 0 ? ', ' : ''}`}
             <Link

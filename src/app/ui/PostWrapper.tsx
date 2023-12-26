@@ -11,7 +11,7 @@ const PostWrapper = memo(function PostWrapper (post: postSchema) {
         id={post?.id}
         title={post?.title}
         body={post?.body}
-        tags={post?.tags}
+        tags={post?.tags || []}
         userId={post?.userId}
       />
       <div className='space-x-4 flex items-center'>

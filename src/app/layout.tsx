@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SideNav from './ui/Sidenav'
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex flex-col md:flex-row min-h-screen mx-auto max-w-7xl overflow-y-scroll bg-background`}
       >
+        <ToastContainer />
         <aside className='w-1/4 flex justify-end'>
           <SideNav />
         </aside>

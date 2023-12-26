@@ -2,6 +2,7 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useFormStatus } from 'react-dom'
 
 export function SideButton(props: {
   filename: string
@@ -43,3 +44,17 @@ export function SideButton(props: {
   )
 }
 
+export function Submit({ name }: { name: string }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type='submit'
+      className={`bg-accent-1 font-semibold p-2 hover:text-black transition hover:brightness-125 disabled:bg-transparent disabled:text-accent-1 disabled:cursor-wait`}
+      data-test={`add-${name.toLowerCase()}`}
+      disabled={pending}
+    >
+      {pending ? 'Loading' : `Post ${name}`}
+    </button>
+  )
+}
