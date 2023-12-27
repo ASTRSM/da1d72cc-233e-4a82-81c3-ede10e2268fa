@@ -30,13 +30,10 @@ export function SideButton(props: {
         })}
       />
       <h1
-        className={clsx(
-          'md:block text-xs md:text-2xl font-light transition',
-          {
-            'text-background': props.isActive,  
-            'group-hover:text-background': !props.isActive
-          }
-        )}
+        className={clsx('md:block text-xs md:text-2xl font-light transition', {
+          'text-background': props.isActive,
+          'group-hover:text-background': !props.isActive
+        })}
       >
         {props.text}
       </h1>
@@ -55,6 +52,19 @@ export function Submit({ name }: { name: string }) {
       disabled={pending}
     >
       {pending ? 'Loading' : `Post ${name}`}
+    </button>
+  )
+}
+
+export function LoadMoreButton({ handleClick }: { handleClick: () => void }) {
+  return (
+    <button
+      type='button'
+      className='bg-transparent text-accent-1 border border-accent-1 text-center p-2 hover:bg-accent-1 hover:text-background transition my-6 w-full'
+      onClick={handleClick}
+      data-test='load-more-button'
+    >
+      Load more...
     </button>
   )
 }

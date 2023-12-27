@@ -1,6 +1,7 @@
 import { postSchema } from '../lib/definitions'
 import PostWrapper from './PostWrapper'
 import { LoadingCircle } from '@/app/ui/skeletons'
+import { LoadMoreButton } from './buttons'
 
 export default function PostsWrapper({
   posts,
@@ -17,7 +18,7 @@ export default function PostsWrapper({
 
   return (
     <>
-      <div className='text-sm min-h-screen'>
+      <div className='text-sm' data-test='posts-wrapper'>
         {posts?.map((post: postSchema) => {
           return (
             <PostWrapper
@@ -32,15 +33,8 @@ export default function PostsWrapper({
           )
         })}
       </div>
-      {!isLoading && (
-        <button
-          type='button'
-          className='bg-transparent text-accent-1 border border-accent-1 text-center p-2 hover:bg-accent-1 hover:text-background transition my-6'
-          onClick={handleClick}
-          data-test='load-more-button'
-        >
-          Load more...
-        </button>
+      {!isLoading && posts.length > 0 && (
+        <LoadMoreButton handleClick={handleClick} />
       )}
     </>
   )
