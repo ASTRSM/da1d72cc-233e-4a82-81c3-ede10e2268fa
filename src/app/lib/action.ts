@@ -2,8 +2,10 @@
 import { revalidatePath } from 'next/cache'
 import {
   commentFormSchema,
+  commentSchema,
   commentState,
   postFormSchema,
+  postSchema,
   postState,
   postsSchema
 } from './definitions'
@@ -34,7 +36,7 @@ export async function addPost(
       body: JSON.stringify({ userId, ...validatedFields.data })
     })
 
-    const data = await res.json()
+    const data: postSchema = await res.json()
     revalidatePath('/')
     return {
       success: true,
@@ -81,7 +83,7 @@ export async function addComment(
       })
     })
 
-    const data: postsSchema = await res.json()
+    const data: commentSchema = await res.json()
     revalidatePath('/')
     return {
       success: true,

@@ -6,6 +6,7 @@ import PostsWrapper from './ui/PostsWrapper'
 import { addPost } from './lib/action'
 import { useFormState } from 'react-dom'
 import { useEffect } from 'react'
+import { postState } from './lib/definitions'
 
 export default function Home() {
   const userId = 1 // user example
