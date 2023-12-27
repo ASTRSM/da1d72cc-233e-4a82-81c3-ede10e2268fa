@@ -1,12 +1,11 @@
 'use server'
 import { revalidatePath } from 'next/cache'
-import { boolean, z } from 'zod'
 import {
   commentFormSchema,
   commentState,
   postFormSchema,
-  postSchema,
-  postState
+  postState,
+  postsSchema
 } from './definitions'
 
 export async function addPost(
@@ -82,7 +81,7 @@ export async function addComment(
       })
     })
 
-    const data = await res.json()
+    const data: postsSchema = await res.json()
     revalidatePath('/')
     return {
       success: true,

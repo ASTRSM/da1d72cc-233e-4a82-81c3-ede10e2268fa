@@ -1,12 +1,15 @@
 import { ZodError } from 'zod'
 import { postsSchema, postSchema, commentsSchema } from './definitions'
-import { unstable_noStore as noStore} from 'next/cache';
+import { unstable_noStore as noStore } from 'next/cache'
 
-export async function getAllPost(offset: number) {
+export async function getAllPost(offset: number, query?: string) {
   try {
-    const res = await fetch(
-      `https://dummyjson.com/posts?limit=10&skip=${offset}`
-    )
+    const queryAble = query?.replace(/ /g, '+')
+    const resource = queryAble
+      ? `https://dummyjson.com/posts/search?q=${queryAble}&limit=10&skip=${offset}`
+      : `https://dummyjson.com/posts?limit=10&skip=${offset}`
+
+    const res = await fetch(resource)
     const data = await res.json()
     postsSchema.parse(data)
 
@@ -49,6 +52,6 @@ export async function getCommentsByPostId(postId: number) {
       console.error('Validation error:', error.errors)
     } else {
       console.error('Unexpected error:', error)
-    } 
+    }
   }
 }

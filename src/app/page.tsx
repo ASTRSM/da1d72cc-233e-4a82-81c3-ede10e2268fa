@@ -30,7 +30,10 @@ export default function Home() {
     <div className='flex flex-col justify-center mb-12'>
       <AddPost dispatch={dispatch} state={state} key={state?.data?.id}/>
       <PostsWrapper
-        posts={posts}
+        posts={posts?.posts}
+        total={posts?.total}
+        offset={posts?.skip}
+        limit={posts?.limit}
         isLoading={isLoading}
         handleClick={handleClick}
       />

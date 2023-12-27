@@ -5,16 +5,24 @@ import { LoadMoreButton } from './buttons'
 
 export default function PostsWrapper({
   posts,
-  isLoading,
+  total,
+  offset,
+  limit,
+  isLoading = false,
   handleClick
 }: {
   posts: postSchema[]
-  isLoading: boolean
+  total: number
+  offset: number
+  limit: number
+  isLoading?: boolean
   handleClick: () => void
 }) {
   if (isLoading) {
     return <LoadingCircle />
   }
+
+  const showLoadMoreButton = !isLoading && posts.length > 0 && !((limit + offset) == total) 
 
   return (
     <>
@@ -33,7 +41,7 @@ export default function PostsWrapper({
           )
         })}
       </div>
-      {!isLoading && posts.length > 0 && (
+      {showLoadMoreButton && (
         <LoadMoreButton handleClick={handleClick} />
       )}
     </>
