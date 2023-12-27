@@ -8,8 +8,6 @@ export default function Page() {
   const { posts, isLoading, handleClick, handleSearch } = useSearchPost()
   const searchParams = useSearchParams()
 
-  console.log(isLoading)
-
   return (
     <div className='bg-background m-6 h-full'>
       <div className='p-4 bg-accent-1 rounded-md mb-6'>
