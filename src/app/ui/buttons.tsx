@@ -51,7 +51,7 @@ export function Submit({ name }: { name: string }) {
       data-test={`add-${name.toLowerCase()}`}
       disabled={pending}
     >
-      {pending ? 'Loading' : `Post ${name}`}
+      {pending ? 'Loading' : `${name}`}
     </button>
   )
 }
